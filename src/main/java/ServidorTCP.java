@@ -13,16 +13,17 @@ public class ServidorTCP {
         DataInputStream in;
         DataOutputStream out;
 
-        final int PUERTO = 29000;   //puerto que será establecido por el servidor
+        final int serverPort = 29000;   //puerto que será establecido por el servidor
 
         try {
-            //se establece el socket de acogida con la dirección del servidor y el puerto asociado
-            socketAcogida = new ServerSocket(PUERTO);
+            //se establece el socket de acogida con la dirección del servidor, se vincula puerto asociado con bind(),
+            //luego se queda esperando una nueva petición con el método listen()
+            socketAcogida = new ServerSocket(serverPort);
             System.out.println("Servidor iniciado. Esperando petición entrante...");
 
             while (true){
-                //Al momento de escuchar la petición de un cliente, el servidor acepta el acuerdo en tres fases, por
-                // lo que crea un nuevo socket, con un puerto definido por el servidor, dedicado a ese cliente
+                //Al momento de escuchar la petición de un cliente, el servidor acepta el acuerdo en tres fases,
+                // por lo que crea un nuevo socket, con un puerto definido por el servidor, dedicado a ese cliente
                 socketConexion = socketAcogida.accept();
                 System.out.println("Conexión establecida con el cliente " +
                         socketConexion.getInetAddress().getHostAddress() + "\n");
