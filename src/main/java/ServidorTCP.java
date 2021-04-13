@@ -47,7 +47,8 @@ public class ServidorTCP {
                     opcionSeleccionada = Integer.parseInt(aRecibir);
 
                     //se envía el mensaje que contiene el servicio a la petición del cliente
-                    out.writeUTF(horaZonaSeleccionada(opcionSeleccionada));
+                    aEnviar = horaZonaSeleccionada(opcionSeleccionada);
+                    out.writeUTF(aEnviar);
 
                     //Se recibe un mensaje de confirmación por parte del cliente
                     aRecibir = in.readUTF();
